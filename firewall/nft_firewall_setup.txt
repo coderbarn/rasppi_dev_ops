@@ -1,0 +1,34 @@
+nfttables is newer than iptables. There is also UFW which is a simpler interface
+
+
+   47  sudo systemctl status nftables.service
+   48  sudo systemctl start nftables.service
+   49  sudo systemctl enable nftables.service
+   50  sudo nft list ruleset
+   51  sudo nft add table inet filter
+   52  sudo nft list ruleset
+   53  sudo nft 'add chain inet filter input { type filter hook input priority 0; }'
+   54  sudo nft list ruleset
+   55  sudo nft add rule inet filter input tcp dport { 3000 } accept
+   56  sudo nft list ruleset
+   58  sudo nft add rule inet filter input tcp dport { 3000 } reject
+   59  sudo nft list ruleset
+   60  sudo nft -a list ruleset
+   62  sudo nft delete rule inet filter input handle 4
+   63  sudo nft -a list ruleset
+   64  sudo nft delete rule inet filter input handle 4
+   65  sudo nft delete rule inet filter input handle 6
+   66  sudo nft add rule inet filter input tcp dport { 3000 } reject
+   67  sudo nft -a list ruleset
+   68  nft add rule inet filter input iif lo accept
+   69  sudo nft add rule inet filter input iif lo accept
+   70  sudo nft -a list ruleset
+   73  curl http://localhost:3000
+   74  curl http://localhost
+   75  sudo nft create rule inet filter input ip saddr 127.0.0.0/8 counter drop
+   76  sudo nft add rule inet filter input ip saddr 127.0.0.0/8 counter drop
+   77  curl http://localhost:3000
+   78  sudo nft -a list ruleset
+   79  sudo nft delete rule inet filter input handle 7
+   80  sudo nft add rule inet filter input tcp dport { 3000 } reject
+   81  sudo nft -a list ruleset

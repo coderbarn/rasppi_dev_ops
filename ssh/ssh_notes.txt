@@ -1,0 +1,18 @@
+ssh-keygen -t ed25519 -C "coderbarn@gmail.com"
+
+In .ssh
+	vi config
+		Host github.com
+		  HostName github.com
+		  User git
+		  IdentityFile ~/.ssh/rasppi4
+		  IdentitiesOnly yes
+		  ForwardAgent yes
+
+		Host bitbucket-personal
+		  HostName bitbucket.org
+		  User git
+		  IdentityFile ~/.ssh/id_rsa_personal <- Change this if/when you use it
+		  IdentitiesOnly yes
+
+
